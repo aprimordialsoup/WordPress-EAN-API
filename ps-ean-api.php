@@ -34,5 +34,5 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 
 // include plugin options
-include plugin_dir_url( __FILE__ ).'/options.php';
+include plugin_dir_path( __FILE__ ).'/options.php';
 
