@@ -33,6 +33,12 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 
-// include plugin options
-include plugin_dir_path( __FILE__ ).'/options.php';
+// include classes
+include plugin_dir_path( __FILE__ ).'classes/psEan.php';
 
+
+// include plugin options
+include plugin_dir_path( __FILE__ ).'options.php';
+
+// include plugin url rewrites
+include plugin_dir_path( __FILE__ ).'rewrites.php';
