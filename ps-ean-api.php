@@ -32,6 +32,8 @@
 // disallow direct access
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+// start the session
+session_start();
 
 // include classes
 include plugin_dir_path( __FILE__ ).'classes/psEan.php';
