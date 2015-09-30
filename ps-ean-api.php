@@ -36,7 +36,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 session_start();
 
 // include classes
-include plugin_dir_path( __FILE__ ).'classes/psEan.php';
+include plugin_dir_path( __FILE__ ).'classes/PS_EAN_API.php';
 
 
 // include plugin options

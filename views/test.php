@@ -8,7 +8,7 @@ $key = get_option('ean_key');
 $sec = get_option('ean_secret');
 
 // instantiate EAN class
-$psean = new psEan( $cid, $key, $sec );
+$psean = new PS_EAN_API( $cid, $key, $sec );
 
 // test hotel list call
 $country = "CA";
