@@ -5,7 +5,7 @@
  * Used for generating requests to the EAN API
  * and retrieving the results from the response
  **/
-class psEan {
+class PS_EAN_API {
 
 	public static $IMGURL = "http://images.travelnow.com/";
 
@@ -31,9 +31,9 @@ class psEan {
 	/**
 	 * Retrieves a list of hotels for a given location
 	 *
-	 * @param counry
-	 * @param province
-	 * @param city
+	 * @param string $counry The country to search
+	 * @param string $province The province to search
+	 * @param string $city The city to search
 	 *
 	 * @return an array of hotels
 	 **/
