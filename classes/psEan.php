@@ -49,7 +49,7 @@ class psEan {
 		$url .= "&arrivalDate=11/01/2015"; // TODO: make this dynamic
 		$url .= "&departureDate=11/02/2015";
 		// number of results to return does not work for a dateless request
-		$url .= "&numberOfResults=50"; // TODO: make this dynamic
+		$url .= "&numberOfResults=5"; // TODO: make this dynamic
 		// complete call
 		// echo "<br/>[[[ " . $url . "]]]<br/>";
 		$resp = $this->completeCall( $url );
