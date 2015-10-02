@@ -1,19 +1,34 @@
 <?php
 
 // rewrite rules
-add_action( 'init', 'pseanapi_rewrite_rules', 10, 0 );
-function pseanapi_rewrite_rules() {
-	// TODO: get rid of test page
+// add_action( 'init', 'psean_rewrite_rules', 10, 0 );
+function psean_rewrite_rules() {
+    // ( $regex, $redirect, $after )
+
+    // TODO: get rid of test page
     // test page
     add_rewrite_rule(
         '^test/?$',
         'index.php?psean=test',
         'top' );
+
+    // json data pages
+    //// location
+    $base_url = get_option('psean_base_url');
+    add_rewrite_rule(
+        $base_url.'/data/locations/?$',
+        substr( plugin_dir_path( __FILE__ ) . 'data/locations.php', 1 ),
+        'top' );
+    //// ...
+    
+    // flush rewrite rules
+    flush_rewrite_rules();
 }
 
+
 // remembers the custom query vars
-add_filter( 'query_vars', 'pseanapi_rewrite_query_vars' );
-function pseanapi_rewrite_query_vars( $query_vars ){
+add_filter( 'query_vars', 'psean_rewrite_query_vars' );
+function psean_rewrite_query_vars( $query_vars ){
     // the action being performed
     $query_vars[] = 'psean';
     // return
@@ -23,18 +38,18 @@ function pseanapi_rewrite_query_vars( $query_vars ){
 // rewrite action
 add_action( 'template_redirect', 'execute_action' );
 function execute_action() {
-	// TODO: remove debug info:
-	/*
-	if( get_query_var('psean') ) {
-		$out = '';
-		$out .= ':::';
-		$out .= get_query_var('psean');
-		$out .= ':::';
-		$out .= '<br/>';
-		echo $out;
-	}
-	/**/
-	// TODO: remove test
+    // TODO: remove debug info:
+    /*
+    if( get_query_var('psean') ) {
+        $out = '';
+        $out .= ':::';
+        $out .= get_query_var('psean');
+        $out .= ':::';
+        $out .= '<br/>';
+        echo $out;
+    }
+    /**/
+    // TODO: remove test
     // test page
     if( get_query_var('psean')
     && get_query_var('psean') == 'test' ) {

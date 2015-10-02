@@ -35,6 +35,17 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 // start the session
 session_start();
 
+
+// include initialization
+include plugin_dir_path( __FILE__ ).'init.php';
+register_activation_hook( __FILE__ , 'psean_activate' );
+
+// include plugin url rewrites
+include plugin_dir_path( __FILE__ ).'rewrites.php';
+register_activation_hook( __FILE__ , 'psean_rewrite_rules' );
+
+
+
 // include classes
 include plugin_dir_path( __FILE__ ).'classes/PS_EAN_API.php';
 
@@ -48,5 +59,3 @@ add_action( 'widgets_init', function(){
 // include plugin options
 include plugin_dir_path( __FILE__ ).'options.php';
 
-// include plugin url rewrites
-include plugin_dir_path( __FILE__ ).'rewrites.php';
