@@ -49,6 +49,12 @@ register_activation_hook( __FILE__ , 'psean_rewrite_rules' );
 // include classes
 include plugin_dir_path( __FILE__ ).'classes/PS_EAN_API.php';
 
+// include widget ui
+include plugin_dir_path( __FILE__ ).'classes/PS_EAN_Widget.php';
+add_action( 'widgets_init', function(){
+     register_widget( 'PS_EAN_Widget' );
+});
+
 
 // include plugin options
 include plugin_dir_path( __FILE__ ).'options.php';
