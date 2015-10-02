@@ -39,7 +39,7 @@ class PS_EAN_API {
 	 **/
 	public function getHotelList( $country, $province, $city ) {
 		// construct url base
-		$url = psEan::$URLS['hotels']['list'];
+		$url = PS_EAN_API::$URLS['hotels']['list'];
 		$url .= $this->baseURL();
 		// append country, province, and city info
 		$url .= "&countryCode=$country";
