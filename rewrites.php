@@ -13,14 +13,26 @@ function psean_rewrite_rules() {
         'top' );
 
     // json data pages
-    //// location
     $base_url = get_option('psean_base_url');
+    //// countries
     add_rewrite_rule(
-        $base_url.'/data/locations/?$',
-        substr( plugin_dir_path( __FILE__ ) . 'data/locations.php', 1 ),
-        'top' );
-    //// ...
-    
+        $base_url.'/data/countries/?$',
+        substr( plugin_dir_path( __FILE__ ), 1 ) . 'data/locations/countries.php',
+        'top'
+    );
+    //// provinces
+    add_rewrite_rule(
+        $base_url.'/data/provinces/([^/].*)/?$',
+        substr( plugin_dir_path( __FILE__ ), 1 ) . 'data/locations/provinces.php?c=$1',
+        'top'
+    );
+    //// cities
+    add_rewrite_rule(
+        $base_url.'/data/cities/([^/].*)/([^/].*)/?$',
+        substr( plugin_dir_path( __FILE__ ), 1 ) . 'data/locations/cities.php?p=$1&c=$2',
+        'top'
+    );
+
     // flush rewrite rules
     flush_rewrite_rules();
 }

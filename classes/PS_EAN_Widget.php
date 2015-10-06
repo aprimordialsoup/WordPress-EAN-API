@@ -33,7 +33,16 @@ class PS_EAN_Widget extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		?>
-		/* search form will go here */
+
+		<label for='ean_country'>Country:</label>
+		<input type='text' id='ean_country' name='ean_country' />
+		
+		<label for='ean_prov'>Province:</label>
+		<input type='text' id='ean_prov' name='ean_prov' />
+
+		<label for='ean_city'>City:</label>
+		<input type='text' id='ean_city' name='ean_city' />
+
 		<?php
 		echo $args['after_widget'];
 	}

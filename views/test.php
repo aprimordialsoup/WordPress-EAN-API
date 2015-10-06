@@ -23,7 +23,7 @@ foreach ($hotels as $key => $hotel) {
 	// var_dump( $hotel );
 	?>
 	<div role='hotel' style='border:1px solid blue;'>
-		<img src='<?php echo psEan::$IMGURL.$hotel->{'thumbNailUrl'} ?>' />
+		<img src='<?php echo PS_EAN_API::$IMGURL.$hotel->{'thumbNailUrl'} ?>' />
 		<h3><?php echo $hotel->{'name'} ?></h3>
 		<div role='ranking'><?php echo $hotel->{'hotelRating'} ?>/5 stars</div>
 		<!-- <div role='reviews'>?reviews?</div> -->
