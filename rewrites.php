@@ -11,6 +11,7 @@ function psean_rewrite_rules() {
         '^test/?$',
         'index.php?psean=test',
         'top' );
+		
 
     // json data pages
     //// location
