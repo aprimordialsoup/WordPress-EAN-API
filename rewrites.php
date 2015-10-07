@@ -5,12 +5,14 @@
 function psean_rewrite_rules() {
     // ( $regex, $redirect, $after )
 
+
     // TODO: get rid of test page
     // test page
     add_rewrite_rule(
         '^test/?$',
         'index.php?psean=test',
         'top' );
+
 
     // json data pages
     $base_url = get_option('psean_base_url');
@@ -32,6 +34,14 @@ function psean_rewrite_rules() {
         substr( plugin_dir_path( __FILE__ ), 1 ) . 'data/locations/cities.php?p=$1&c=$2',
         'top'
     );
+
+    //// geoip
+    add_rewrite_rule(
+        $base_url.'/data/geoip/?$',
+        substr( plugin_dir_path( __FILE__ ), 1 ) . 'data/locations/geoip.php',
+        'top'
+    );
+
 
     // flush rewrite rules
     flush_rewrite_rules();
