@@ -1,6 +1,6 @@
 <?php
-// file used
-$file = 'locations.csv';
+
+include( 'json-header.php' );
 
 $countries = array();
 
@@ -29,4 +29,4 @@ if ( ( $handle = fopen( $file, 'r' ) ) !== FALSE ) {
 array_multisort( $countries, SORT_ASC ); 
 
 // output
-echo json_encode( $countries );
+echo json_encode( $countries, JSON_UNESCAPED_UNICODE );
