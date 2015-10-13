@@ -33,10 +33,10 @@ class PS_EAN_Widget extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		?>
-
+abc
 		<label for='ean_country'>Country:</label>
 		<input type='text' id='ean_country' name='ean_country' />
-		
+
 		<label for='ean_prov'>Province:</label>
 		<input type='text' id='ean_prov' name='ean_prov' />
 
@@ -57,10 +57,10 @@ class PS_EAN_Widget extends WP_Widget {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'New title', 'ps_ean_api' );
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
-		<?php 
+		<?php
 	}
 
 	/**
