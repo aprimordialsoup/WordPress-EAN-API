@@ -33,7 +33,7 @@ function psean_rewrite_rules() {
         substr( plugin_dir_path( __FILE__ ), 1 ) . 'data/locations/cities.php?p=$1&c=$2',
         'top'
     );
-
+	
     // flush rewrite rules
     flush_rewrite_rules();
 }

@@ -51,7 +51,7 @@ foreach ($hotels as $key => $hotel) {
 			$<?php echo $hotel->{'RoomRateDetailsList'}->{'RoomRateDetails'}->{'RateInfo'}->{'ChargeableRateInfo'}->{'NightlyRatesPerRoom'}->{'NightlyRate'}->{'@rate'} ?>
 			<?php echo $hotel->{'RoomRateDetailsList'}->{'RoomRateDetails'}->{'RateInfo'}->{'ChargeableRateInfo'}->{'@currencyCode'} ?>
 		</div>
-		<form method="get" action="info.php">
+		<form method="get" action="/views/info.php">
 		<input type="hidden"  name="hotelid" value="<?php echo $hotel->{'hotelId'} ?>"></input>
 		<input type="submit" role='select' value="Select <?php echo $hotel->{'hotelId'} ?>"></input>
 		</form>
