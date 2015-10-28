@@ -34,6 +34,7 @@ function psean_rewrite_rules() {
         substr( plugin_dir_path( __FILE__ ), 1 ) . 'data/locations/cities.php?p=$1&c=$2',
         'top'
     );
+<<<<<<< HEAD
 
     //// geoip
     add_rewrite_rule(
@@ -41,6 +42,19 @@ function psean_rewrite_rules() {
         substr( plugin_dir_path( __FILE__ ), 1 ) . 'data/locations/geoip.php',
         'top'
     );
+=======
+	
+    // hotel list
+    add_rewrite_rule(
+        $base_url.'/hotel/list/?$',
+        'index.php?psean=hotel-list',
+        'top' );
+    // hotel info
+    add_rewrite_rule(
+        $base_url.'/hotel/([^/].*)/?$',
+        'index.php?psean=hotel-info&hotelid=$matches[1]',
+        'top' );
+>>>>>>> 59c414d311878dc80ec1307faaed2789102d4442
 
 
     // flush rewrite rules
@@ -53,6 +67,8 @@ add_filter( 'query_vars', 'psean_rewrite_query_vars' );
 function psean_rewrite_query_vars( $query_vars ){
     // the action being performed
     $query_vars[] = 'psean';
+    // hotel id
+    $query_vars[] = 'hotelid';
     // return
     return $query_vars;
 }
@@ -77,6 +93,24 @@ function execute_action() {
     && get_query_var('psean') == 'test' ) {
         add_filter( 'template_include', function() {
             return plugin_dir_path( __FILE__ ) . 'views/test.php';
+        });
+    }
+
+    // hotel list
+    if( get_query_var('psean')
+    && get_query_var('psean') == 'hotel-list' ) {
+        add_filter( 'template_include', function() {
+            return plugin_dir_path( __FILE__ ) . 'views/hotel/list.php';
+        });
+    }
+
+    // hotel info
+    if( get_query_var('psean')
+    && get_query_var('psean') == 'hotel-info'
+    && get_query_var('hotelid')
+    && intval(get_query_var('hotelid')) > 0 ) {
+        add_filter( 'template_include', function() {
+            return plugin_dir_path( __FILE__ ) . 'views/hotel/info.php';
         });
     }
 
