@@ -1,3 +1,3 @@
 <?php
-echo $_GET['hotelid'];
+echo $wp_query->query_vars['hotelid'];
 ?>
