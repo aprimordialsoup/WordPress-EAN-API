@@ -11,8 +11,8 @@ class PS_EAN_API {
 
 	private static $URLS = array(
 		'hotels' => array(
-			'list' => 'http://api.ean.com/ean-services/rs/hotel/v3/list?'
-		)
+			'list' => 'http://api.ean.com/ean-services/rs/hotel/v3/list?',
+			'info' => 'http://api.ean.com/ean-services/rs/hotel/v3/info?'		)
 	);
 
 	/**
@@ -132,8 +132,24 @@ class PS_EAN_API {
 		////////////// @amount
 	}
 
+public function getHotelInfo($hotelid) {
+	// construct url base
+		$url = PS_EAN_API::$URLS['hotels']['info'];
+		$url .= $this->baseURL();
+		// append country, province, and city info
+		$url .= "&hotelId=$hotelid";
+         $url.="&options=0"; 
+		// complete call
+		// echo "<br/>[[[ " . $url . "]]]<br/>";
+		$resp = $this->completeCall( $url );
+		// parse returned data
+		//// hotel info
+		$info = $resp->{'HotelInformationResponse'};
+		// $size = $list->{'HotelList'}->{'@size'};
+		
+return $info;
 
-
+}
 	/**
 	 * Constructs a base URL with
 	 * - apiExperience
