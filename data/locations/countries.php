@@ -26,6 +26,7 @@ if ( ( $handle = fopen( $file, 'r' ) ) !== FALSE ) {
 }
 
 // sort
+array_multisort( $countries, SORT_ASC );
 
 // output
 echo json_encode( $countries, JSON_UNESCAPED_UNICODE );

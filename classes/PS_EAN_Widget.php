@@ -33,7 +33,31 @@ class PS_EAN_Widget extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		?>
-abc
+
+		<script src='http://code.jquery.com/jquery-1.11.0.min.js'></script>
+		<script>
+			$(document).ready(function () {
+
+				$('#ean_country').keypress (function () {
+					// get value of country search
+					console.log('key pressed');
+
+					var searchParam = $(this).val();
+					console.log(searchParam);
+
+					var url = 'http://localhost/local-wordpress/ean/data/countries';
+
+					$.getJSON(url, function (data) {
+						console.log(data);
+
+						// var returnedData = data.AD[0];
+						// console.log(returnedData.code);
+
+					}); // end of getJSON
+				}); // end of keypress
+			}) // end of doc ready
+		</script>
+
 		<label for='ean_country'>Country:</label>
 		<input type='text' id='ean_country' name='ean_country' />
 
