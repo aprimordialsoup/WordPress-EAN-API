@@ -24,4 +24,7 @@ function psean_activate() {
         update_option( 'psean_base_url' , 'ean' );
     }
 
+    // extract data CSVs into JSON files
+    // (runs only if needed)
+    include plugin_dir_path( __FILE__ ).'data/locations/convert.php';
 }
