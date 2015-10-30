@@ -132,13 +132,18 @@ class PS_EAN_API {
 		////////////// @amount
 	}
 
-public function getHotelInfo($hotelid) {
-	// construct url base
+	/**
+	 * TODO: LEAVE A DESCRIPTION
+	 */
+	public function getHotelInfo( $hotelid ) {
+		// construct url base
 		$url = PS_EAN_API::$URLS['hotels']['info'];
 		$url .= $this->baseURL();
+
 		// append country, province, and city info
 		$url .= "&hotelId=$hotelid";
-         $url.="&options=0"; 
+	    $url .= "&options=0";
+
 		// complete call
 		// echo "<br/>[[[ " . $url . "]]]<br/>";
 		$resp = $this->completeCall( $url );
@@ -146,10 +151,11 @@ public function getHotelInfo($hotelid) {
 		//// hotel info
 		$info = $resp->{'HotelInformationResponse'};
 		// $size = $list->{'HotelList'}->{'@size'};
-		
-return $info;
+			
+		return $info;
 
-}
+	}
+	
 	/**
 	 * Constructs a base URL with
 	 * - apiExperience
