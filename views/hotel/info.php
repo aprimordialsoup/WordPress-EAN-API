@@ -37,7 +37,7 @@ $image =$hotels->{'HotelImages'}->{'HotelImage'};
 echo "<td>\n images =><td>";
 foreach ($image as $key => $value) {
 	echo '</br>'.$value->{'caption'}.'===>'; //.'====>'.'<img src="'.$value->{'url'}.'/>"';
- echo "<br><img src='".$value->{'thumbnailUrl'}."' />";
+ echo "<br><a href=".$value->{'url'}."><img src='".$value->{'thumbnailUrl'}."' /></a>";
 }
 echo "<td/>";
 echo "</tr>"; 
