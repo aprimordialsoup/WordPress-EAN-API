@@ -6,7 +6,11 @@
  * Version: 0.1
  * Author: Primordial Soup
  * Author URI: http://primordialsoup.ca
- * Contributors: Jaskaranjit Singh
+ * Contributors:
+ *     Jaskaranjit Singh
+ *     Daljit Singh
+ *     Juan Mendiola
+ *
  * License: GPLv3 or later
  * License URI: http://opensource.org/licenses/GPL-3.0
  */
