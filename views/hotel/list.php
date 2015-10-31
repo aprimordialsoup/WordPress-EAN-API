@@ -25,7 +25,10 @@ $city = $wp_query->query_vars['ean_city'];
 $hotels = $psean->getHotelList( $country, $province, $city );
 
 echo "<br/>";
-
+if($hotels == NULL){
+	echo "check location parameters";
+}
+else {
 foreach ($hotels as $key => $hotel) {
 	// echo "bars: $key @ $value<br/><br/>";
 	// var_dump( $hotel );
@@ -80,3 +83,4 @@ foreach ($hotels as $key => $hotel) {
 }
 
 echo "<br/>finish<br/>";
+}

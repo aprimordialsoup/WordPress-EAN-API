@@ -18,7 +18,7 @@ $psean = new PS_EAN_API( $cid, $key, $sec );
 
 // hotel info
 $hotels = $psean->getHotelInfo($hotelid);
-// echo "<h3>".$hotels->{'HotelSummary'}->{'name'}."</h3>";
+echo "<h1>".$hotels->{'HotelSummary'}->{'name'}."</h1>";
 // echo "<table cellpadding='5' border='1'>";
 // echo "<tr>";
 // echo "<td style='padding-top: 2px;'>information  =></td><td>". html_entity_decode($hotels->{'HotelDetails'}->{'areaInformation'})."</td>";
@@ -42,5 +42,19 @@ $hotels = $psean->getHotelInfo($hotelid);
 // echo "<td/>";
 // echo "</tr>"; 
 // echo "</table>";
-	
+?>
+<h2><u>Area-Information</u></h2><p><?php echo html_entity_decode($hotels->{'HotelDetails'}->{'areaInformation'}) ;?></p>
+<h2><u>Room-Information</u></h2><p><?php echo html_entity_decode($hotels->{'HotelDetails'}->{'roomInformation'}) ;?></p>
+<h2><u>Check-in time</u></h2><p><?php echo html_entity_decode($hotels->{'HotelDetails'}->{'checkInTime'}) ;?></p>
+<h2><u>Check-out time</u></h2><p><?php echo html_entity_decode($hotels->{'HotelDetails'}->{'checkOutTime'}) ;?></p>
+<?php $image =$hotels->{'HotelImages'}->{'HotelImage'};
+echo "<table cellpadding='5' border='1' >";
+echo "<th colspan='2'><h1><u>Hotel Images</u><h1></th>";
+   foreach ($image as $key => $value) {
+ echo "<tr>";
+echo '<td>'.$value->{'caption'}.'===></td>';
+ echo "<td><a href=".$value->{'url'}."><img src='".$value->{'thumbnailUrl'}."' /></a></td>";
+echo "</tr>";
+   }
+   echo "</table>";
 ?>

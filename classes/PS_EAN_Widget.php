@@ -41,7 +41,7 @@ class PS_EAN_Widget extends WP_Widget {
 		<input type='text' id='ean_prov' name='ean_prov' />
 
 		<label for='ean_city'>City:</label>
-		<input type='text' id='ean_city' name='ean_city' />
+		<input type='text' id='ean_city' name='ean_city' /><br>
 		<input type="submit" value="Search" />
 		</form>
 
