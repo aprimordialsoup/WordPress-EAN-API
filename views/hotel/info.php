@@ -18,33 +18,29 @@ $psean = new PS_EAN_API( $cid, $key, $sec );
 
 // hotel info
 $hotels = $psean->getHotelInfo($hotelid);
-echo "<h3>".$hotels->{'HotelSummary'}->{'name'}."</h3>";
-echo "<table cellpadding='5' border='1'>";
-echo "<tr>";
-echo "<td style='padding-top: 2px;'>information  =></td><td>". html_entity_decode($hotels->{'HotelDetails'}->{'areaInformation'})."</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>\n Room information =><td>".html_entity_decode($hotels->{'HotelDetails'}->{'roomInformation'})."<td/>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>\n check-in time =><td>".$hotels->{'HotelDetails'}->{'checkInTime'}."<td/>";
-echo "</tr>";  
-echo "<tr>";
-echo "<td>\n check-out time =><td>".$hotels->{'HotelDetails'}->{'checkOutTime'}."<td/>";
-echo "</tr>"; 
-echo "<tr>";
-$image =$hotels->{'HotelImages'}->{'HotelImage'};
-echo "<td>\n images =><td>";
-foreach ($image as $key => $value) {
-	echo '</br>'.$value->{'caption'}.'===>'; //.'====>'.'<img src="'.$value->{'url'}.'/>"';
- echo "<br><a href=".$value->{'url'}."><img src='".$value->{'thumbnailUrl'}."' /></a>";
-}
-echo "<td/>";
-echo "</tr>"; 
-echo "</table>";
-	 {
-
-
-}
-
+// echo "<h3>".$hotels->{'HotelSummary'}->{'name'}."</h3>";
+// echo "<table cellpadding='5' border='1'>";
+// echo "<tr>";
+// echo "<td style='padding-top: 2px;'>information  =></td><td>". html_entity_decode($hotels->{'HotelDetails'}->{'areaInformation'})."</td>";
+// echo "</tr>";
+// echo "<tr>";
+// echo "<td>\n Room information =><td>".html_entity_decode($hotels->{'HotelDetails'}->{'roomInformation'})."<td/>";
+// echo "</tr>";
+// echo "<tr>";
+// echo "<td>\n check-in time =><td>".$hotels->{'HotelDetails'}->{'checkInTime'}."<td/>";
+// echo "</tr>";  
+// echo "<tr>";
+// echo "<td>\n check-out time =><td>".$hotels->{'HotelDetails'}->{'checkOutTime'}."<td/>";
+// echo "</tr>"; 
+// echo "<tr>";
+// $image =$hotels->{'HotelImages'}->{'HotelImage'};
+// echo "<td>\n images =><td>";
+// foreach ($image as $key => $value) {
+	// echo '</br>'.$value->{'caption'}.'===>'; //.'====>'.'<img src="'.$value->{'url'}.'/>"';
+ // echo "<br><a href=".$value->{'url'}."><img src='".$value->{'thumbnailUrl'}."' /></a>";
+// }
+// echo "<td/>";
+// echo "</tr>"; 
+// echo "</table>";
+	
 ?>

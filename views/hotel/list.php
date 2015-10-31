@@ -16,9 +16,12 @@ $psean = new PS_EAN_API( $cid, $key, $sec );
 // receive this from the widget
 
 // test hotel list call
-$country = "CA";
-$province = "ON";
-$city = "Toronto";
+
+//receiving location from widget
+
+$country = $wp_query->query_vars['ean_country'];
+$province = $wp_query->query_vars['ean_prov'];
+$city = $wp_query->query_vars['ean_city'];
 $hotels = $psean->getHotelList( $country, $province, $city );
 
 echo "<br/>";

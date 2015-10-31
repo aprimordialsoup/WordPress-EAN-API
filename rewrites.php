@@ -47,8 +47,8 @@ function psean_rewrite_rules() {
 
 	// hotel list
     add_rewrite_rule(
-        $base_url.'/hotel/list/?$',
-        'index.php?psean=hotel-list',
+        $base_url.'/hotel/list/([^/].*)?$',
+        'index.php?psean=hotel-list&ean_country=$matches[1]&ean_prov=$matches[2]&ean_city=$matches[3]',
         'top' );
     // hotel info
     add_rewrite_rule(
@@ -67,7 +67,13 @@ function psean_rewrite_query_vars( $query_vars ){
     $query_vars[] = 'psean';
     // hotel id
     $query_vars[] = 'hotelid';
-    // return
+	//country
+	$query_vars[] ='ean_country';
+	//province
+	$query_vars[] ='ean_prov';
+	//city
+	$query_vars[] = 'ean_city';
+	// return
     return $query_vars;
 }
 
