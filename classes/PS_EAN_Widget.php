@@ -32,14 +32,15 @@ class PS_EAN_Widget extends WP_Widget {
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
+		$base_url = get_option('psean_base_url');
 		?>
-	<form method="get" action="/ean/hotel/list">
+		
+	<form method="get" action="<?php echo $base_url; ?>/hotel/list">
 		<label for='ean_country'>Country:</label>
 		<input type='text' id='ean_country' name='ean_country' />
 		
 		<label for='ean_prov'>Province:</label>
 		<input type='text' id='ean_prov' name='ean_prov' />
-
 		<label for='ean_city'>City:</label>
 		<input type='text' id='ean_city' name='ean_city' /><br>
 		<input type="submit" value="Search" />

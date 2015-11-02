@@ -22,7 +22,8 @@ $psean = new PS_EAN_API( $cid, $key, $sec );
 $country = $wp_query->query_vars['ean_country'];
 $province = $wp_query->query_vars['ean_prov'];
 $city = $wp_query->query_vars['ean_city'];
-$hotels = $psean->getHotelList( $country, $province, $city );
+$ncity = urlencode($city);
+$hotels = $psean->getHotelList( $country, $province, $ncity );
 
 echo "<br/>";
 if($hotels == NULL){
