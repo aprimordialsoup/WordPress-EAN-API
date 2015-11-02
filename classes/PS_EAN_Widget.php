@@ -34,7 +34,6 @@ class PS_EAN_Widget extends WP_Widget {
 		}
 		$base_url = get_option('psean_base_url');
 		?>
-		
 	<form method="get" action="<?php echo $base_url; ?>/hotel/list">
 		<label for='ean_country'>Country:</label>
 		<input type='text' id='ean_country' name='ean_country' />

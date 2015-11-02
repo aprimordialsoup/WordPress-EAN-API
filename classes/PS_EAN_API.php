@@ -57,12 +57,12 @@ class PS_EAN_API {
 		//// hotel list
 		$list = $resp->{'HotelListResponse'};
 		// $size = $list->{'HotelList'}->{'@size'};
-		$htls = $list->{'HotelList'}->{'HotelSummary'};
+		//$htls = $list->{'HotelList'}->{'HotelSummary'};
 		//// session id
 		$this->csid = $list->{'customerSessionId'};
 		$_SESSION['csid'] = $this->csid;
 		// return the list of hotels
-		return $htls;
+		return $list;
 		// each hotel contains:
 		// 
 		// @order
@@ -195,5 +195,54 @@ class PS_EAN_API {
 		$response = file_get_contents( $url );
 		return json_decode( $response );
 	}
+public function more($hotels){
+	set_query_var('cachk', $hotels->{'cacheKey'} );	
+	set_query_var('cachl', $hotels->{'cacheLocation'} );
+	$hotels = $hotels->{'HotelList'}->{'HotelSummary'};
+	
+foreach ($hotels as $key => $hotel) {
+	// echo "bars: $key @ $value<br/><br/>";
+	// var_dump( $hotel );
+	?>
+	<div role='hotel' style='border:1px solid;'>
+		<img src='<?php echo PS_EAN_API::$IMGURL.$hotel->{'thumbNailUrl'} ?>'/>
+		<h3><?php echo $hotel->{'name'} ?></h3>
+		<div id="rate">
+		<?php
+		$r =  $hotel->{'hotelRating'};
+		// TODO:
+		// do not round, instead display full and half stars
+		$n = round($r); 
+		$x = 0;
+		for( $x; $x<$n; $x++ ){
+			echo "★";
+		}
+		?>
+		</div>
+		<!-- <div role='ranking'><?php echo $hotel->{'hotelRating'} ?>/5 stars</div> -->
+		<div role='address'><?php echo $hotel->{'address1'} .", ". $hotel->{'city'} .",". $hotel->{'countryCode'} ?></div>
+		<?php /*
+			<iframe
+			  width="200"
+			  height="200"
+			  frameborder="0" style="border:0"
+			  src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBsQ_K-mlyd_eaBqo7Ms7-2GLunFapyZYI&center=<?php echo $hotel->{'latitude'}.",".$hotel->{'longitude'}?>&zoom=18">
+			</iframe>
+		*/ ?>
+		<!-- <div role='reviews'>?reviews?</div> -->
+		<div role='rate'>
+			$<?php echo $hotel->{'RoomRateDetailsList'}->{'RoomRateDetails'}->{'RateInfo'}->{'ChargeableRateInfo'}->{'NightlyRatesPerRoom'}->{'NightlyRate'}->{'@rate'} ?>
+			<?php echo $hotel->{'RoomRateDetailsList'}->{'RoomRateDetails'}->{'RateInfo'}->{'ChargeableRateInfo'}->{'@currencyCode'} ?>
+		</div>,
 
+		<!-- button -->
+		<br/>
+		<?php $url = get_site_url() . '/' . get_option('psean_base_url') . '/hotel/' . $hotel->{'hotelId'}; ?>
+		<a href='<?php echo $url; ?>'>[ Select ]</a>
+	</div>
+</br>
+	<?php
+	// echo var_dump( $hotel[ $key ] );
+}
+}
 }
