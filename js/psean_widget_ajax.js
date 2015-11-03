@@ -4,32 +4,48 @@
 jQuery(document).ready(function () {
 
 	var $ = jQuery;
+	var url = pseanapi_site_url + 'ean/data/countries';
 
-	// listen for key presses on the country input
-	// drop down a list of matching countries
-	$('#ean_country').keyup( function () {
-		// get value of country search
-		var searchParam = $(this).val();
+	$.getJSON( url, function (data) {
+
+		// all country data
+		//console.log( "data:", data );
+
+		// store data into localStorage
+		localStorage['data'] = JSON.stringify(data);
+
+	}); // end of getJSON
+
+	// parse data from localStorage
+	var countryData = JSON.parse(localStorage['data']);
+	console.log('countryData:', countryData);
+
+	// listen for keypress on #ean_country
+	$('#ean_country').keyup(function () {
+
+		// clear output before displaying filtered data
+		$('#output').empty();
+
+		// get input of #ean_country
+		var searchParam = $(this).val().toLowerCase();
 		var searchLength = searchParam.length;
+		console.log('keyup: ', searchParam);
 
-		console.log('key pressed',searchParam);
+		// filter data
+		var filtered = $.grep(countryData, function(country) {
+				return country.name.toLowerCase().substr(0, searchLength) === searchParam;
+		}); // end of filtered
+		console.log('filtered data: ', filtered)
 
-		var url = pseanapi_site_url + 'ean/data/countries';
+		// display data only if search length > 0
+		if (searchLength > 0) {
 
-		$.getJSON( url, function (data) {
-			// all the data
-			// console.log( "data:", data );
+			$.each(filtered, function(index, country) {
 
-			var filtered = $.grep( data, function(v) {
-				return v.name.toLowerCase().substr(0,searchLength) === searchParam;
-			});
+					$('#output').append(country.name + '<br>');
+			}); // end of filtered
+		}
 
-			// filtered data
-			console.log( "filtered data: ", filtered );
+	}) // end of keyup
 
-			// var returnedData = data.AD[0];
-			// console.log(returnedData.code);
-
-		}); // end of getJSON
-	}); // end of keypress
 }) // end of doc ready

@@ -43,6 +43,7 @@ class PS_EAN_Widget extends WP_Widget {
 		<label for='ean_city'>City:</label>
 		<input type='text' id='ean_city' name='ean_city' />
 
+		<div id='output'></div>
 		<?php
 		echo $args['after_widget'];
 	}
