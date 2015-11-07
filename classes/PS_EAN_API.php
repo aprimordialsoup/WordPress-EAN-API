@@ -46,13 +46,14 @@ class PS_EAN_API {
 		$url .= "&stateProvinceCode=$province";
 		$url .= "&city=$city";
 		// append checkin/checkout dates in MM/DD/YYYY format
-		$url .= "&arrivalDate=11/01/2015"; // TODO: make this dynamic
-		$url .= "&departureDate=11/02/2015";
+		$url .= "&arrivalDate=11/07/2015"; // TODO: make this dynamic
+		$url .= "&departureDate=11/09/2015";
 		// number of results to return does not work for a dateless request
-		$url .= "&numberOfResults=5"; // TODO: make this dynamic
+		$url .= "&numberOfResults=20"; // TODO: make this dynamic
 		// complete call
 		// echo "<br/>[[[ " . $url . "]]]<br/>";
 		$resp = $this->completeCall( $url );
+		
 		// parse returned data
 		//// hotel list
 		$list = $resp->{'HotelListResponse'};
@@ -199,7 +200,6 @@ public function more($hotels){
 	set_query_var('cachk', $hotels->{'cacheKey'} );	
 	set_query_var('cachl', $hotels->{'cacheLocation'} );
 	$hotels = $hotels->{'HotelList'}->{'HotelSummary'};
-	
 foreach ($hotels as $key => $hotel) {
 	// echo "bars: $key @ $value<br/><br/>";
 	// var_dump( $hotel );

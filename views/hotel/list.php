@@ -6,9 +6,9 @@
 echo "<br/>start<br/>";
 
 // retrieve EAN details
-$cid = get_option('ean_cid');
-$key = get_option('ean_key');
-$sec = get_option('ean_secret');
+$cid = get_option('psean_cid');
+$key = get_option('psean_key');
+$sec = get_option('psean_secret');
 
 // instantiate EAN class
 $psean = new PS_EAN_API( $cid, $key, $sec );
@@ -43,6 +43,6 @@ echo "<br/>finish<br/>";
 <button id="but">more results</button>
 <script>
 $("#but").click(function(){
-	$("#content").append("here to append more element");
+	$("#content").append("here to append more element</br>");
 });
 </script>
