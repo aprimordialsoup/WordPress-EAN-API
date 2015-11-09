@@ -38,6 +38,7 @@ if($hotels == NULL){
 else {
 echo "<div id='content'>";
 $psean->more($hotels);
+$psean->getRoomAvail("231306", $arrive , $depart ,"1" ,"2");
 echo "</div>";
 echo "<br/>finish<br/>";
 }

@@ -12,7 +12,8 @@ class PS_EAN_API {
 	private static $URLS = array(
 		'hotels' => array(
 			'list' => 'http://api.ean.com/ean-services/rs/hotel/v3/list?',
-			'info' => 'http://api.ean.com/ean-services/rs/hotel/v3/info?'		)
+			'info' => 'http://api.ean.com/ean-services/rs/hotel/v3/info?',
+			'avail' => 'http://api.ean.com/ean-services/rs/hotel/v3/avail?'	)
 	);
 
 	/**
@@ -151,11 +152,27 @@ class PS_EAN_API {
 		// parse returned data
 		//// hotel info
 		$info = $resp->{'HotelInformationResponse'};
-		// $size = $list->{'HotelList'}->{'@size'};
+	 	// $size = $list->{'HotelList'}->{'@size'};
 			
 		return $info;
 
 	}
+	// room availablity
+public function getRoomAvail($hotelid, $arrive , $depart ,$no_room ,$adults){
+			$url = PS_EAN_API::$URLS['hotels']['avail'];
+			$url .= $this->baseURL();
+		   $url .="&hotelId=$hotelid";
+			$url .= "&arrivalDate=$arrive";
+			$url .= "&departureDate=$depart";
+			$url .= "&includeDetails=true";
+			$url .= "&includeRoomImages=true";
+//TODO:
+//make children age dynamic
+			$url .= "&room".$no_room."=".$adults.",5,7";
+	
+$respon = $this->completeCall( $url );
+ var_dump($respon);
+}
 	
 	/**
 	 * Constructs a base URL with
