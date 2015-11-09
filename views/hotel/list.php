@@ -15,7 +15,7 @@ $psean = new PS_EAN_API( $cid, $key, $sec );
 
 // TODO:
 // instead of hard-coding the location
-// receive this from the widget
+// receive this from the widget->done
 
 // test hotel list call
 
@@ -24,8 +24,12 @@ $psean = new PS_EAN_API( $cid, $key, $sec );
 $country = $wp_query->query_vars['ean_country'];
 $province = $wp_query->query_vars['ean_prov'];
 $city = $wp_query->query_vars['ean_city'];
+$warrive = $wp_query->query_vars['ean_arrive'];
+$wdepart =$wp_query->query_vars['ean_depart'];
+$arrive= date("m-d-Y", strtotime($warrive));
+$depart= date("m-d-Y", strtotime($wdepart));
 $ncity = urlencode($city);
-$hotels = $psean->getHotelList( $country, $province, $ncity );
+$hotels = $psean->getHotelList( $country, $province, $ncity, $arrive,$depart );
 
 echo "<br/>";
 if($hotels == NULL){

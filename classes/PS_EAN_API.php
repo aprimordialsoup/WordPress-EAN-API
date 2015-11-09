@@ -37,7 +37,7 @@ class PS_EAN_API {
 	 *
 	 * @return an array of hotels
 	 **/
-	public function getHotelList( $country, $province, $city ) {
+	public function getHotelList( $country, $province, $city ,$arrive, $depart) {
 		// construct url base
 		$url = PS_EAN_API::$URLS['hotels']['list'];
 		$url .= $this->baseURL();
@@ -46,14 +46,14 @@ class PS_EAN_API {
 		$url .= "&stateProvinceCode=$province";
 		$url .= "&city=$city";
 		// append checkin/checkout dates in MM/DD/YYYY format
-		$url .= "&arrivalDate=11/07/2015"; // TODO: make this dynamic
-		$url .= "&departureDate=11/09/2015";
+		$url .= "&arrivalDate=$arrive"; //
+		$url .= "&departureDate=$depart";
 		// number of results to return does not work for a dateless request
 		$url .= "&numberOfResults=20"; // TODO: make this dynamic
 		// complete call
 		// echo "<br/>[[[ " . $url . "]]]<br/>";
 		$resp = $this->completeCall( $url );
-		
+		//var_dump($resp);
 		// parse returned data
 		//// hotel list
 		$list = $resp->{'HotelListResponse'};

@@ -35,9 +35,12 @@ class PS_EAN_Widget extends WP_Widget {
 		$base_url = get_option('psean_base_url');
 		?>
 	<form method="get" action="<?php echo $base_url; ?>/hotel/list">
+		<label for="ean_arrive">Arrive Date</label>
+		<input type="date"id="ean_arrive" name='ean_arrive'/><br />
+		<label for="ean_depart">Depart Date</label>
+		<input type="date"id="ean_depart" name='ean_depart'/>
 		<label for='ean_country'>Country:</label>
 		<input type='text' id='ean_country' name='ean_country' />
-		
 		<label for='ean_prov'>Province:</label>
 		<input type='text' id='ean_prov' name='ean_prov' />
 		<label for='ean_city'>City:</label>
